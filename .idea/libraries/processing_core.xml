@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="processing.core" type="repository">
+    <properties maven-id="org.processing:core:3.3.7" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/processing/core/3.3.7/core-3.3.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

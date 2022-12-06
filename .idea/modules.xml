@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/santarunner_1.iml" filepath="$PROJECT_DIR$/santarunner_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/santarunner.iml" filepath="$PROJECT_DIR$/santarunner.iml" />
     </modules>
   </component>
 </project>

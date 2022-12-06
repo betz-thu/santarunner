@@ -1,6 +1,8 @@
-public class Geschenk extends FlugObjekt {
+package santarunner;
 
-    public Geschenk(int x, int y) {
+public class Vogel extends FlugObjekt {
+
+    public Vogel(int x, int y) {
         super(x, y, 10, 10);
     }
 

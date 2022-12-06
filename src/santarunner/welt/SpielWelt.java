@@ -1,19 +1,24 @@
+package santarunner.welt;
+
+import processing.core.PApplet;
+import santarunner.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
+
+
 
 public class SpielWelt {
 
     List<DekoObjekt> dekoObjekte;
     List<FlugObjekt> flugObjekte;
-    Schlitten schlitten;
     List<WurfGeschenk> wurfGeschenke;
     List<Kamin> kamine;
 
-    public SpielWelt() {
-        init();
-    }
+    Schlitten schlitten;
 
-    private void init() {
+    public SpielWelt() {
         wurfGeschenke = new ArrayList<>();
         flugObjekte = new ArrayList<>();
         kamine = new ArrayList<>();
@@ -42,6 +47,13 @@ public class SpielWelt {
         }
     }
 
+    public void zeichne(PApplet app) {
+        app.background(10, 20, 100);
+        for (SpielObjekt objekt: this.alleObjekte()) {
+            objekt.zeichne(app);
+        }
+    }
+
     List<SpielObjekt> alleObjekte() {
         List<SpielObjekt> objekte = new ArrayList<>();
         objekte.add(schlitten);
@@ -61,6 +73,15 @@ public class SpielWelt {
     }
 
     public void wirfGeschenk() {
-        this.wurfGeschenke.add(new WurfGeschenk(schlitten.x, schlitten.y));
+        this.wurfGeschenke.add(new WurfGeschenk(schlitten.getX(), schlitten.getY()));
+    }
+
+
+    public void bewegeSchlittenNachOben() {
+        schlitten.bewegeNachOben();
+    }
+
+    public void bewegeSchlittenNachUnten() {
+        schlitten.bewegeNachUnten();
     }
 }

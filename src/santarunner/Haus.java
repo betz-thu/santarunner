@@ -1,3 +1,5 @@
+package santarunner;
+
 public class Haus extends DekoObjekt {
 
     public Haus(int x) {

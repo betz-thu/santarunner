@@ -1,3 +1,7 @@
+package santarunner.welt;
+
+import santarunner.*;
+
 public class SpielWeltErzeuger {
     private final SpielWelt welt;
 

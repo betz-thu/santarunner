@@ -1,3 +1,5 @@
+package santarunner;
+
 public class Kamin extends SpielObjekt {
 
     public Kamin(int x) {

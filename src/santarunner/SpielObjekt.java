@@ -1,3 +1,7 @@
+package santarunner;
+
+import processing.core.PApplet;
+
 public abstract class SpielObjekt {
 
     int x;
@@ -29,4 +33,8 @@ public abstract class SpielObjekt {
     }
 
     public abstract void bewege();
+
+    public void zeichne(PApplet app) {
+        app.rect(x, y, breite, hoehe);
+    }
 }

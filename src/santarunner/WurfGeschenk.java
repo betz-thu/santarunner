@@ -1,3 +1,5 @@
+package santarunner;
+
 public class WurfGeschenk extends SpielObjekt {
     public WurfGeschenk(int x, int y) {
         super(x, y, 10, 10);
