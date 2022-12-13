@@ -1,14 +1,16 @@
 package santarunner;
 
+import santarunner.welt.SpielWelt;
+
 public class Schlitten extends SpielObjekt {
 
-    public Schlitten(int x, int y) {
-        super(x, y, 60, 30);
+    public Schlitten(ISpielWelt welt, int x, int y) {
+        super(welt, x, y, 60, 30);
     }
 
     @Override
     public void bewege() {
-        //  Der santarunner.Schlitten bewegt sich nicht von selbst.
+        //  Der Schlitten bewegt sich nicht von selbst.
     }
 
 

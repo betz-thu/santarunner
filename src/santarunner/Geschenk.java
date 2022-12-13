@@ -1,11 +1,16 @@
 package santarunner;
 
 import processing.core.PApplet;
+import santarunner.welt.SpielWelt;
 
 public class Geschenk extends FlugObjekt {
 
-    public Geschenk(int x, int y) {
-        super(x, y, 10, 10);
+    public Geschenk(SpielWelt welt, int x, int y) {
+        super(welt, x, y, 10, 10);
+    }
+    @Override
+    public void onKollisionMitSchlitten() {
+        welt.sammleGeschenkEin(this);
     }
 
     public void bewege() {
@@ -22,4 +27,5 @@ public class Geschenk extends FlugObjekt {
         app.rect(x, y, breite, hoehe);
         app.popStyle();
     }
+
 }

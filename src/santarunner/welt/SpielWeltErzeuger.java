@@ -10,19 +10,11 @@ public class SpielWeltErzeuger {
     }
 
     public void initSpielWelt() {
-        welt.schlitten = new Schlitten(200, 200);
-        {
-            Haus haus = new Haus(100);
-            welt.dekoObjekte.add(haus);
-            welt.kamine.add(haus.getKamin());
-        }
-        {
-            Haus haus = new Haus(500);
-            welt.dekoObjekte.add(haus);
-            welt.kamine.add(haus.getKamin());
-        }
+        welt.schlitten = new Schlitten(welt, 200, 200);
+        welt.dekoObjekte.add(new Haus(welt,100));
+        welt.dekoObjekte.add(new Haus(welt,500));
 
-        welt.flugObjekte.add(new Geschenk(400, 100));
-        welt.flugObjekte.add(new Vogel(450, 150));
+        welt.flugObjekte.add(new Geschenk(welt,400, 100));
+        welt.flugObjekte.add(new Vogel(welt,450, 150));
     }
 }

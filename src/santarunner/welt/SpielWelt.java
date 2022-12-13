@@ -9,19 +9,18 @@ import java.util.List;
 
 
 
-public class SpielWelt {
+public class SpielWelt implements ISpielWelt {
 
+    int anzahlGeschenke = 7;
     List<DekoObjekt> dekoObjekte;
     List<FlugObjekt> flugObjekte;
     List<WurfGeschenk> wurfGeschenke;
-    List<Kamin> kamine;
 
     Schlitten schlitten;
 
     public SpielWelt() {
         wurfGeschenke = new ArrayList<>();
         flugObjekte = new ArrayList<>();
-        kamine = new ArrayList<>();
         dekoObjekte = new ArrayList<>();
     }
 
@@ -33,10 +32,6 @@ public class SpielWelt {
         this.wurfGeschenke.add(geschenk);
     }
 
-    void addKamin(Kamin kamin) {
-        this.kamine.add(kamin);
-    }
-
     void addFlugObjekt(FlugObjekt flugObjekt) {
         this.flugObjekte.add(flugObjekt);
     }
@@ -45,6 +40,11 @@ public class SpielWelt {
         for (SpielObjekt objekt: this.alleObjekte()) {
             objekt.bewege();
         }
+        for (FlugObjekt flugObjekt: this.flugObjekte) {
+            if (this.schlitten.hasKollosionMit(flugObjekt)) {
+                flugObjekt.onKollisionMitSchlitten();
+            }
+        }
     }
 
     public void zeichne(PApplet app) {
@@ -52,6 +52,8 @@ public class SpielWelt {
         for (SpielObjekt objekt: this.alleObjekte()) {
             objekt.zeichne(app);
         }
+        app.textSize(20);
+        app.text(anzahlGeschenke, 10, 30);
     }
 
     List<SpielObjekt> alleObjekte() {
@@ -60,14 +62,22 @@ public class SpielWelt {
         objekte.addAll(dekoObjekte);
         objekte.addAll(wurfGeschenke);
         objekte.addAll(flugObjekte);
-        objekte.addAll(kamine);
         return objekte;
     }
 
     public void wirfGeschenk() {
-        int x = schlitten.getX();
-        int y = schlitten.getY();
-        this.wurfGeschenke.add(new WurfGeschenk(x, y));
+        if (anzahlGeschenke > 0) {
+            anzahlGeschenke -= 1;
+            int x = schlitten.getX();
+            int y = schlitten.getY();
+            this.wurfGeschenke.add(new WurfGeschenk(this, x, y));
+        }
+    }
+
+    @Override
+    public void sammleGeschenkEin(Geschenk geschenk) {
+        this.flugObjekte.remove(geschenk);
+        anzahlGeschenke += 1;
     }
 
     public void bewegeSchlittenNachRechts() {

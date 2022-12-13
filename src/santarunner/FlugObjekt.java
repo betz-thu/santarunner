@@ -1,8 +1,12 @@
 package santarunner;
 
+import santarunner.welt.SpielWelt;
+
 public abstract class FlugObjekt extends SpielObjekt {
 
-    public FlugObjekt(int x, int y, int breite, int hoehe) {
-        super(x, y, breite, hoehe);
+    public FlugObjekt(ISpielWelt welt, int x, int y, int breite, int hoehe) {
+        super(welt, x, y, breite, hoehe);
     }
+
+    public abstract void onKollisionMitSchlitten();
 }

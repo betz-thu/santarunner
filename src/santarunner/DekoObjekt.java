@@ -1,7 +1,9 @@
 package santarunner;
 
+import santarunner.welt.SpielWelt;
+
 public abstract class DekoObjekt extends SpielObjekt {
-    public DekoObjekt(int x, int y, int breite, int hoehe) {
-        super(x,y,breite,hoehe);
+    public DekoObjekt(SpielWelt welt, int x, int y, int breite, int hoehe) {
+        super(welt, x,y,breite,hoehe);
     }
 }

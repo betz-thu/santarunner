@@ -1,9 +1,11 @@
 package santarunner;
 
+import santarunner.welt.SpielWelt;
+
 public class Vogel extends FlugObjekt {
 
-    public Vogel(int x, int y) {
-        super(x, y, 10, 10);
+    public Vogel(ISpielWelt welt, int x, int y) {
+        super(welt, x, y, 10, 10);
     }
 
     public void bewege() {
@@ -11,5 +13,10 @@ public class Vogel extends FlugObjekt {
         if (x < -breite) {
             x = 600;
         }
+    }
+
+    @Override
+    public void onKollisionMitSchlitten() {
+        welt.wirfGeschenk();
     }
 }
