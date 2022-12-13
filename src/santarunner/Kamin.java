@@ -2,14 +2,14 @@ package santarunner;
 
 public class Kamin extends SpielObjekt {
 
-    public Kamin(int x) {
-        super(x, 450, 20, 20);
+    Haus haus;
+
+    public Kamin(Haus haus) {
+        super(haus.x, 450, 20, 20);
+        this.haus = haus;
     }
 
     public void bewege() {
-        x -= 1;
-        if (x < -breite) {
-            x = 600;
-        }
+        this.x = haus.getX() + 70;
     }
 }

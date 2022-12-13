@@ -64,16 +64,18 @@ public class SpielWelt {
         return objekte;
     }
 
-    public void schlittenAuf() {
-        this.schlitten.auf();
-    }
-
-    public void schlittenAb() {
-        this.schlitten.ab();
-    }
-
     public void wirfGeschenk() {
-        this.wurfGeschenke.add(new WurfGeschenk(schlitten.getX(), schlitten.getY()));
+        int x = schlitten.getX();
+        int y = schlitten.getY();
+        this.wurfGeschenke.add(new WurfGeschenk(x, y));
+    }
+
+    public void bewegeSchlittenNachRechts() {
+        schlitten.bewegeNachRechts();
+    }
+
+    public void bewegeSchlittenNachLinks() {
+        schlitten.bewegeNachLinks();
     }
 
 

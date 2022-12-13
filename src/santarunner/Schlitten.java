@@ -6,14 +6,6 @@ public class Schlitten extends SpielObjekt {
         super(x, y, 60, 30);
     }
 
-    public void auf() {
-        y -= 1;
-    }
-
-    public void ab() {
-        y += 1;
-    }
-
     @Override
     public void bewege() {
         //  Der santarunner.Schlitten bewegt sich nicht von selbst.
@@ -21,10 +13,18 @@ public class Schlitten extends SpielObjekt {
 
 
     public void bewegeNachOben() {
-        y -= 1;
+        y -= 2;
     }
 
     public void bewegeNachUnten() {
-        y += 1;
+        y += 2;
+    }
+
+    public void bewegeNachRechts() {
+        x += 2;
+    }
+
+    public void bewegeNachLinks() {
+        x -= 2;
     }
 }

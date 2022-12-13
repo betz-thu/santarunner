@@ -32,10 +32,15 @@ public class Spiel extends PApplet {
         if (keyPressed) {
             if (key == 'w' || keyCode == UP) {
                 welt.bewegeSchlittenNachOben();
-            }
-
-            if (key == 's' || keyCode == DOWN) {
+            } else if (key == 'a' || keyCode == LEFT) {
+                welt.bewegeSchlittenNachLinks();
+            }else if (key == 's' || keyCode == DOWN) {
                 welt.bewegeSchlittenNachUnten();
+            }else if (key == 'd' || keyCode == RIGHT) {
+                welt.bewegeSchlittenNachRechts();
+
+            } else if (key == ' ') {
+                welt.wirfGeschenk();
             }
         }
     }
