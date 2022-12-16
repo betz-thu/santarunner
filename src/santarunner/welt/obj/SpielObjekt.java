@@ -1,7 +1,7 @@
-package santarunner;
+package santarunner.welt.obj;
 
 import processing.core.PApplet;
-import santarunner.welt.SpielWelt;
+import santarunner.welt.ISpielWelt;
 
 public abstract class SpielObjekt {
 
@@ -11,12 +11,19 @@ public abstract class SpielObjekt {
     int breite;
     int hoehe;
 
-    public SpielObjekt(ISpielWelt welt, int x, int y, int breite, int hoehe) {
-        this.welt = welt;
+    public SpielObjekt(int x, int y, int breite, int hoehe) {
         this.x = x;
         this.y = y;
         this.breite = breite;
         this.hoehe = hoehe;
+    }
+
+    protected ISpielWelt getWelt() {
+        return welt;
+    }
+
+    public void setWelt(ISpielWelt welt) {
+        this.welt = welt;
     }
 
     public boolean hasKollosionMit(SpielObjekt that) {

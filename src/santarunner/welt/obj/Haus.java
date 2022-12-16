@@ -1,4 +1,4 @@
-package santarunner;
+package santarunner.welt.obj;
 
 import processing.core.PApplet;
 import santarunner.welt.SpielWelt;
@@ -7,9 +7,9 @@ public class Haus extends DekoObjekt {
 
     Kamin kamin;
 
-    public Haus(SpielWelt welt, int x) {
-        super(welt, x, 450, 100, 100);
-        this.kamin = new Kamin(welt,this);
+    public Haus(int x) {
+        super(x, 450, 100, 100);
+        this.kamin = new Kamin(this);
     }
 
     public Kamin getKamin() {

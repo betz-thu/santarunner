@@ -2,6 +2,7 @@ package santarunner;
 
 import processing.core.PApplet;
 import processing.event.KeyEvent;
+import santarunner.welt.ISpielWelt;
 import santarunner.welt.SpielWelt;
 import santarunner.welt.SpielWeltErzeuger;
 
@@ -19,8 +20,8 @@ public class Spiel extends PApplet {
 
     @Override
     public void settings() {
-        width = 600;
-        height = 600;
+        width = ISpielWelt.BREITE;
+        height = ISpielWelt.HOEHE;
     }
 
     @Override

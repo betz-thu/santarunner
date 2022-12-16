@@ -1,6 +1,5 @@
-package santarunner;
-
 import processing.core.PApplet;
+import santarunner.Spiel;
 import santarunner.welt.SpielWelt;
 import santarunner.welt.SpielWeltErzeuger;
 

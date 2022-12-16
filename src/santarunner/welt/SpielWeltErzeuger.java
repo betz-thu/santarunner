@@ -1,20 +1,58 @@
 package santarunner.welt;
 
-import santarunner.*;
+import santarunner.welt.obj.FlugGeschenk;
+import santarunner.welt.obj.Haus;
+import santarunner.welt.obj.Schlitten;
+import santarunner.welt.obj.Vogel;
+
+import java.util.Random;
 
 public class SpielWeltErzeuger {
     private final SpielWelt welt;
+    private final Random random;
 
     public SpielWeltErzeuger(SpielWelt welt) {
         this.welt = welt;
+        this.welt.setErzeuger(this);
+
+        random = new Random();
     }
 
     public void initSpielWelt() {
-        welt.schlitten = new Schlitten(welt, 200, 200);
-        welt.dekoObjekte.add(new Haus(welt,100));
-        welt.dekoObjekte.add(new Haus(welt,500));
+        erzeugeSchlitten();
+        erzeugeHaeuser();
 
-        welt.flugObjekte.add(new Geschenk(welt,400, 100));
-        welt.flugObjekte.add(new Vogel(welt,450, 150));
+        erzeugeGeschenk();
+        erzeugeGeschenk();
+        erzeugeVogel();
+        erzeugeVogel();
     }
+
+    void erzeugeVogel() {
+        int dx = random.nextInt(200);
+        int dy = random.nextInt(200);
+        int dz = random.nextInt(Vogel.PERIODE);
+
+        Vogel vogel = new Vogel(ISpielWelt.BREITE + dx, 50 + dy);
+        vogel.setZyklen(dz);
+
+        welt.addFlugObjekt(vogel);
+    }
+
+    void erzeugeGeschenk() {
+        int dx = random.nextInt(200);
+        int dy = random.nextInt(200);
+        welt.addFlugObjekt(new FlugGeschenk(ISpielWelt.BREITE + dx, 50 + dy));
+    }
+
+    private void erzeugeHaeuser() {
+        welt.addHaus(new Haus(100));
+        welt.addHaus(new Haus(500));
+    }
+
+    private void erzeugeSchlitten() {
+        welt.setSchlitten(new Schlitten(200, 200));
+    }
+
+
 }

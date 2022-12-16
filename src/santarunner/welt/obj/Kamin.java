@@ -1,13 +1,13 @@
-package santarunner;
+package santarunner.welt.obj;
 
-import santarunner.welt.SpielWelt;
+import santarunner.welt.ISpielWelt;
 
 public class Kamin extends SpielObjekt {
 
     Haus haus;
 
-    public Kamin(ISpielWelt welt, Haus haus) {
-        super(welt, haus.x, 450, 20, 20);
+    public Kamin(Haus haus) {
+        super(haus.x, 450, 20, 20);
         this.haus = haus;
     }
 
