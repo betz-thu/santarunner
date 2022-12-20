@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class FlugGeschenk extends FlugObjekt {
 
     public FlugGeschenk(int x, int y) {
-        super(x, y, 10, 10);
+        super(x, y, 25, 25);
     }
     @Override
     public void onKollisionMitSchlitten() {

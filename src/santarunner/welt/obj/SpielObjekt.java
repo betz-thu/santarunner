@@ -53,6 +53,10 @@ public abstract class SpielObjekt {
     public abstract void bewege();
 
     public void zeichne(PApplet app) {
+        app.pushStyle();
+        app.fill(255,255, 255, 64);
+        app.stroke(255, 255, 255);
         app.rect(x, y, breite, hoehe);
+        app.popStyle();
     }
 }
