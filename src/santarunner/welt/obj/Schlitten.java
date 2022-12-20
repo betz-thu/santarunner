@@ -1,16 +1,23 @@
 package santarunner.welt.obj;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import santarunner.welt.ISpielWelt;
 
 public class Schlitten extends SpielObjekt {
 
     public static final int ZYKLEN_UNSICHTBARKEIT = 60;
+    public static final int BREITE = 96;
+    public static final int HOEHE = 40;
+
+    public static final int BEWEGUNG_DELTA = 3;
 
     private int unsichtbar = 0;
 
+    PImage[] frames = null;
+
     public Schlitten(int x, int y) {
-        super(x, y, 60, 30);
+        super(x, y, BREITE, HOEHE);
     }
 
     @Override
@@ -20,19 +27,19 @@ public class Schlitten extends SpielObjekt {
 
 
     public void bewegeNachOben() {
-        y -= 2;
+        y -= BEWEGUNG_DELTA;
     }
 
     public void bewegeNachUnten() {
-        y += 2;
+        y += BEWEGUNG_DELTA;
     }
 
     public void bewegeNachRechts() {
-        x += 2;
+        x += BEWEGUNG_DELTA;
     }
 
     public void bewegeNachLinks() {
-        x -= 2;
+        x -= BEWEGUNG_DELTA;
     }
 
     public void machUnsichtbar() {
@@ -49,10 +56,22 @@ public class Schlitten extends SpielObjekt {
 
     @Override
     public void zeichne(PApplet app) {
+        loadFrames(app);
+
         this.unsichtbar -= 1;
         if (this.unsichtbar % 2 == 1) {
             return;
         }
+
+        int frameIndex = interneZeit() % 40 / 5;
+        app.image(frames[frameIndex], x, y, breite ,hoehe);
+
         super.zeichne(app);
+    }
+
+    private void loadFrames(PApplet app) {
+        if (frames == null) {
+            this.frames = loadFrames(app,"resources/schlitten/frame-%d.png", 8);
+        }
     }
 }

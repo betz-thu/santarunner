@@ -1,6 +1,7 @@
 package santarunner.welt.obj;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import santarunner.welt.ISpielWelt;
 
 public abstract class SpielObjekt {
@@ -10,6 +11,7 @@ public abstract class SpielObjekt {
     int y;
     int breite;
     int hoehe;
+    int phase;
 
     public SpielObjekt(int x, int y, int breite, int hoehe) {
         this.x = x;
@@ -24,6 +26,22 @@ public abstract class SpielObjekt {
 
     public void setWelt(ISpielWelt welt) {
         this.welt = welt;
+    }
+
+    public int getPhase() {
+        return phase;
+    }
+
+    public void setPhase(int phase) {
+        this.phase = phase;
+    }
+
+    protected int globaleZeit() {
+        return welt.getZyklenSeitBeginn();
+    }
+
+    protected int interneZeit() {
+        return globaleZeit() + getPhase();
     }
 
     public boolean hasKollosionMit(SpielObjekt that) {
@@ -54,9 +72,18 @@ public abstract class SpielObjekt {
 
     public void zeichne(PApplet app) {
         app.pushStyle();
-        app.fill(255,255, 255, 64);
+        app.fill(255, 255, 255, 64);
         app.stroke(255, 255, 255);
         app.rect(x, y, breite, hoehe);
         app.popStyle();
+    }
+
+    protected PImage[] loadFrames(PApplet app, String template, int n) {
+        PImage[] frames = new PImage[n];
+        for (int i = 0; i < n; i++) {
+            String filename = String.format(template, i + 1);
+            frames[i] = app.loadImage(filename);
+        }
+        return frames;
     }
 }
