@@ -12,6 +12,11 @@ public class Spiel extends PApplet {
     SpielWeltErzeuger erzeuger;
     long timestampLetzterAbwurf = -1;
 
+    boolean wGedrueckt = false;
+    boolean aGedrueckt = false;
+    boolean sGedrueckt = false;
+    boolean dGedrueckt = false;
+
     public Spiel() {
         welt = new SpielWelt();
         erzeuger = new SpielWeltErzeuger(welt);
@@ -32,16 +37,16 @@ public class Spiel extends PApplet {
     }
 
     private void verarbeiteEingabe() {
-        if (keyPressed) {
-            if (key == 'w' || keyCode == UP) {
-                welt.bewegeSchlittenNachOben();
-            } else if (key == 'a' || keyCode == LEFT) {
-                welt.bewegeSchlittenNachLinks();
-            } else if (key == 's' || keyCode == DOWN) {
-                welt.bewegeSchlittenNachUnten();
-            } else if (key == 'd' || keyCode == RIGHT) {
-                welt.bewegeSchlittenNachRechts();
-            }
+        if (aGedrueckt && !dGedrueckt) {
+            welt.bewegeSchlittenNachLinks();
+        } else if (!aGedrueckt && dGedrueckt) {
+            welt.bewegeSchlittenNachRechts();
+        }
+
+        if (wGedrueckt && !sGedrueckt) {
+            welt.bewegeSchlittenNachOben();
+        } else if (!wGedrueckt && sGedrueckt) {
+            welt.bewegeSchlittenNachUnten();
         }
     }
 
@@ -51,6 +56,31 @@ public class Spiel extends PApplet {
         if (event.getKey() == ' ' && zeitSeitLetztemAbwurf() > 1000) {
             this.timestampLetzterAbwurf = System.currentTimeMillis();
             welt.wirfGeschenk();
+        }
+
+        if (event.getKey() == 'w') {
+            wGedrueckt = true;
+        } else if (event.getKey() == 'a') {
+            aGedrueckt = true;
+        } else if (event.getKey() == 's') {
+            sGedrueckt = true;
+        } else if (event.getKey() == 'd') {
+            dGedrueckt = true;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent event) {
+        super.keyReleased();
+
+        if (event.getKey() == 'w') {
+            wGedrueckt = false;
+        } else if (event.getKey() == 'a') {
+            aGedrueckt = false;
+        } else if (event.getKey() == 's') {
+            sGedrueckt = false;
+        } else if (event.getKey() == 'd') {
+            dGedrueckt = false;
         }
     }
 

@@ -11,6 +11,7 @@ import java.util.List;
 
 public class SpielWelt implements ISpielWelt {
 
+    private static final boolean DEV_MODE = true;
 
     private static final int ZYKLEN_PRO_SEKUNDE = 60;
     private static final int VERBLEIBENDE_ZEIT_ZU_BEGINN = 60 * ZYKLEN_PRO_SEKUNDE;
@@ -109,6 +110,11 @@ public class SpielWelt implements ISpielWelt {
         return objekte;
     }
 
+    @Override
+    public int getZyklenSeitBeginn() {
+        return zyklenSeitBeginn;
+    }
+
     public void wirfGeschenk() {
         if (anzahlGeschenke > 0) {
             anzahlGeschenke -= 1;
@@ -143,6 +149,11 @@ public class SpielWelt implements ISpielWelt {
     @Override
     public void entferneWurfGeschenk(WurfGeschenk wurfGeschenk) {
         this.zuLoeschen.add(wurfGeschenk);
+    }
+
+    @Override
+    public boolean isDevMode() {
+        return DEV_MODE;
     }
 
     public void bewegeSchlittenNachRechts() {

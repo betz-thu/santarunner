@@ -26,15 +26,16 @@ public class SpielWeltErzeuger {
         erzeugeGeschenk();
         erzeugeVogel();
         erzeugeVogel();
+        erzeugeVogel();
     }
 
     void erzeugeVogel() {
-        int dx = random.nextInt(200);
+        int dx = random.nextInt(400);
         int dy = random.nextInt(200);
-        int dz = random.nextInt(Vogel.PERIODE);
+        int phase = random.nextInt(Vogel.PERIODE);
 
         Vogel vogel = new Vogel(ISpielWelt.BREITE + dx, 50 + dy);
-        vogel.setZyklen(dz);
+        vogel.setPhase(phase);
 
         welt.addFlugObjekt(vogel);
     }

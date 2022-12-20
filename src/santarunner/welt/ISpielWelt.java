@@ -7,6 +7,8 @@ public interface ISpielWelt {
     public static final int BREITE = 600;
     public static final int HOEHE = 600;
 
+    int getZyklenSeitBeginn();
+
     void wirfGeschenk();
 
     void sammleGeschenkEin(FlugGeschenk flugGeschenk);
@@ -24,4 +26,6 @@ public interface ISpielWelt {
     void erhoeheZeit();
 
     void entferneWurfGeschenk(WurfGeschenk wurfGeschenk);
+
+    boolean isDevMode();
 }
